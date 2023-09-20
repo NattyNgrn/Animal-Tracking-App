@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Ind from "./components/individual"
 import Sightings from "./components/sightings"
+import Animaltable from "./components/animaltable";
 
 //need two forms
 //first one is for whos tracking which individual animal
@@ -10,6 +11,7 @@ import Sightings from "./components/sightings"
 function App() {
   const [isShown, setIsShown] = useState(false);
   const handleClick = event => setIsShown(true);
+  const [data, setData] = useState([]);
   return (
 
       <div style={{
@@ -35,7 +37,7 @@ function App() {
           {isShown ? <Sightings setIsShown={setIsShown} ></Sightings> : <div></div>}
           </div>
           </div>
-
+        <Animaltable data={data}/>
         <Ind/>
       </div>
   )
