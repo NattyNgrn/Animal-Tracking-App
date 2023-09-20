@@ -10,8 +10,11 @@ import Animaltable from "./components/animaltable";
 
 function App() {
   const [isShown, setIsShown] = useState(false);
-  const handleClick = event => setIsShown(true);
+  const handleClick = event => { setIsShown2(false); setIsShown(true); }
   const [data, setData] = useState([]);
+
+  const [isShown2, setIsShown2] = useState(false);
+  const handleClick2 = event => { setIsShown(false); setIsShown2(true); }
   return (
 
       <div style={{
@@ -33,13 +36,28 @@ function App() {
           </button>
           : <div></div>
         } 
-          {/*if isshown is true then it shows the addevent component also passing refresh in so it refreshes the page when event is added */}
-          {isShown ? <Sightings setIsShown={setIsShown} ></Sightings> : <div></div>}
+        {/*if isshown is true then it shows the addevent component also passing refresh in so it refreshes the page when event is added */}
+        {isShown ? <Sightings setIsShown={setIsShown} ></Sightings> : <div></div>}
+        </div>
+        <div className="mt-6 flex items-center justify-end gap-x-6">
+
+        <div>
+        { !isShown2 ?
+          
+          <button onClick={handleClick2} style={{margin: '20px'}} className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Add a New Animal
+          </button>
+          : <div></div>
+        } 
+        {/*if isshown is true then it shows the addevent component also passing refresh in so it refreshes the page when event is added */}
+        {isShown2 ? <Ind setIsShown={setIsShown2} ></Ind> : <div></div>}
+        </div>
+
+
           </div>
           </div>
         <Animaltable data={data}/>
-        <Ind/>
-      </div>
+        </div>
   )
 }
 
