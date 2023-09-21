@@ -1,7 +1,19 @@
 import "./comp.css"
+import { useState } from "react";
+
 function Ind({setPageToShow}) {
+
     function save(){
         setPageToShow("home");
+    }
+
+    function add(){
+        const [firstName, setFirstName] = useState("");
+        const [lastName, setLastName] = useState("");
+        const [species, setSpecies] = useState("");
+        const [individual, setIndividual] = useState("");
+        const [dateTime, setDateTime] = useState();
+
     }
 
     return (
@@ -70,7 +82,7 @@ function Ind({setPageToShow}) {
 
 
         <div className="col-span-full">
-            <label htmlFor="sighting" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="individualAnimal" className="block text-sm font-medium leading-6 text-gray-900">
                 Name of individual animal:
             </label>
             <div className="mt-2">

@@ -1,8 +1,29 @@
 import "./comp.css"
+import { useState } from "react";
+
+
 function Sightings({setPageToShow}) {
 
     function save(){
         setPageToShow("home");
+    }
+
+    function add() {
+        const [firstName, setFirstName] = useState("");
+        const [lastName, setLastName] = useState("");
+        const [email, setEmail] = useState("");
+        const [species, setSpecies] = useState("");
+        const [animal, setAnimal] = useState("");
+        const [health, setHealth] = useState("");
+        const [healthEx, setHealthEx] = useState("");
+        const [dateTime, setDateTime] = useState();
+        const [country, setCountry] = useState("");
+        const [coordinates, setCoordinates] = useState("");
+
+
+
+
+
     }
 
     return(
@@ -163,7 +184,7 @@ function Sightings({setPageToShow}) {
         </div>
 
         <div className="sm:col-span-4">
-            <label htmlFor="email" >
+            <label htmlFor="coordinates" >
                 Coordinates:
             </label>
             <div className="mt-2">
