@@ -1,7 +1,7 @@
 import "./comp.css"
 function Sightings({setPageToShow}) {
 
-    function save(){
+    function backToHome(){
         setPageToShow("home");
     }
 
@@ -29,6 +29,7 @@ function Sightings({setPageToShow}) {
                 </label>
                 <div className="mt-2">
                     <input
+                    value={firstName}
                     type="text"
                     name="first-name"
                     id="first-name"
@@ -43,6 +44,7 @@ function Sightings({setPageToShow}) {
                 </label>
                 <div className="mt-2">
                     <input
+                    value={lastName}
                     type="text"
                     name="last-name"
                     id="last-name"
@@ -57,6 +59,7 @@ function Sightings({setPageToShow}) {
             </label>
             <div className="mt-2">
                 <input
+                    value={email}
                     id="email"
                     name="email"
                     type="email"
@@ -75,9 +78,9 @@ function Sightings({setPageToShow}) {
                     name="species"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option>Elephant</option>
-                    <option>Whale Shark</option>
-                    <option>Mountain Pygmy Possum</option>
+                    <option value={species}>Elephant</option>
+                    <option value={species}>Whale Shark</option>
+                    <option value={species}>Mountain Pygmy Possum</option>
                 </select>
             </div>
         </div>
@@ -88,6 +91,7 @@ function Sightings({setPageToShow}) {
             </label>
             <div className="mt-2">
                 <input
+                    value={animal}  
                     type="text"
                     name="animal-name"
                     id="animal-name"
@@ -105,18 +109,19 @@ function Sightings({setPageToShow}) {
                     name="healthy"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option>Yes</option>
-                    <option>No</option>
+                    <option value={health}>Yes</option>
+                    <option value={health}>No</option>
                 </select>
             </div>
         </div>
 
         <div className="col-span-full">
-            <label htmlFor="about" >
+            <label htmlFor="healthEx" >
                 Explanation of health:
             </label>
             <div className="mt-2">
                 <textarea
+                    value={healthEx}
                     id="explanation-health"
                     name="explanation-health"
                     rows={3}
@@ -131,7 +136,10 @@ function Sightings({setPageToShow}) {
             </label>
             <div className="mt-2">
                 <input
-                    type="datetime-local" id="datetime" placeholder="Date and Time"
+                    value={dateTime}
+                    type="datetime-local" 
+                    id="datetime" 
+                    placeholder="Date and Time"
                 />
             </div>
         </div>
@@ -147,19 +155,22 @@ function Sightings({setPageToShow}) {
                     autoComplete="country-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
+                    <option value={country}>United States</option>
+                    <option value={country}>Canada</option>
+                    <option value={country}>Mexico</option>
                 </select>
             </div>
         </div>
 
         <div className="sm:col-span-4">
+
+
             <label htmlFor="email" >
                 Coordinates:
             </label>
             <div className="mt-2">
                 <input
+                value={coordinates}
                     id="coordinates"
                     name="coordinates"
                     type="text"
@@ -167,16 +178,24 @@ function Sightings({setPageToShow}) {
                 />
             </div>
 
+
             <div className="mt-6 flex items-center justify-end gap-x-6">
-                <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+                <button
+                onClick={backToHome}
+                type="button" 
+                className="text-sm font-semibold leading-6 text-gray-900">
                     Cancel
                 </button>
+
+
                 <button
                     className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={save}>
+                    onClick={backToHome}>
                     Save
                 </button>
             </div>
+
+
         </div>
 
         </div>
