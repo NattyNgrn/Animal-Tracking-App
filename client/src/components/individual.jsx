@@ -37,6 +37,7 @@ function Ind({setPageToShow}) {
             <div className="mt-2">
                 <input
                 value={firstName}
+                onChange={(e) => {setFirstName(e.target.value)}}
                 type="text"
                 name="first-name"
                 id="first-name"
@@ -52,6 +53,7 @@ function Ind({setPageToShow}) {
             </label>
             <div className="mt-2">
                 <input
+                onChange={(e) => {setLastName(e.target.value)}}
                 value={lastName}
                 type="text"
                 name="last-name"
@@ -73,9 +75,9 @@ function Ind({setPageToShow}) {
                     name="species"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option value={species}>Elephant</option>
-                    <option value={species}>Whale Shark</option>
-                    <option value={species}>Mountain Pygmy Possum</option>
+                    <option value={species} onChange={(e) => {setSpecies(e.target.value)}}>Elephant</option>
+                    <option value={species} onChange={(e) => {setSpecies(e.target.value)}}>Whale Shark</option>
+                    <option value={species} onChange={(e) => {setSpecies(e.target.value)}}>Mountain Pygmy Possum</option>
                 </select>
             </div>
         </div>
@@ -87,6 +89,7 @@ function Ind({setPageToShow}) {
             </label>
             <div className="mt-2">
                 <input
+                    onChange={(e) => {setIndividual(e.target.value)}}
                     value={individual}
                     type="text"
                     name="animal-name"
@@ -103,6 +106,7 @@ function Ind({setPageToShow}) {
             </label>
             <div className="mt-2">
                 <input
+                    onChange={(e) => {setDateTime(e.target.value)}}
                     value={dateTime}
                     type="datetime-local" id="datetime" placeholder="Date and Time"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
