@@ -5,12 +5,12 @@ const header = ["First Name", "Last Name", "Email", "Species", "Animal Nickname"
 function Animaltable({data}){
     return(
         <div>
-            <table class="table-auto">
+            <table className="table-auto">
             <thead>
             <tr>
                 {
                     header.map(
-                        (colname) => <th class="border-4 border-black px-4 py-2">{colname}</th>
+                        (colname) => <th className="border-4 border-black px-4 py-2">{colname}</th>
                     )
                 }
             </tr>
