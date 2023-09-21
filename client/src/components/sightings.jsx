@@ -1,7 +1,6 @@
 import "./comp.css"
 import { useState } from "react";
 
-
 function Sightings({setPageToShow}) {
 
     function save(){
@@ -13,15 +12,12 @@ function Sightings({setPageToShow}) {
         const [lastName, setLastName] = useState("");
         const [email, setEmail] = useState("");
         const [species, setSpecies] = useState("");
-        const [animal, setAnimal] = useState("");
+        const [individual, setIndividual] = useState("");
         const [health, setHealth] = useState("");
         const [healthEx, setHealthEx] = useState("");
         const [dateTime, setDateTime] = useState();
         const [country, setCountry] = useState("");
         const [coordinates, setCoordinates] = useState("");
-
-
-
 
 
     }
@@ -55,6 +51,7 @@ function Sightings({setPageToShow}) {
                     name="first-name"
                     id="first-name"
                     autoComplete="given-name"
+                    onChange={(e) => {setFirstName(e.target.value)}}
                     />
                 </div>
             </div>
@@ -70,6 +67,7 @@ function Sightings({setPageToShow}) {
                     name="last-name"
                     id="last-name"
                     autoComplete="family-name"
+                    onChange={(e) => {setLastName(e.target.value)}}
                     />
                 </div>
             </div>
@@ -85,6 +83,7 @@ function Sightings({setPageToShow}) {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    onChange={(e) => {setEmail(e.target.value)}}
                 />
             </div>
         </div>
@@ -99,23 +98,24 @@ function Sightings({setPageToShow}) {
                     name="species"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option value={species}>Elephant</option>
-                    <option value={species}>Whale Shark</option>
-                    <option value={species}>Mountain Pygmy Possum</option>
+                    <option value={species} onChange={(e) => {setSpecies(e.target.value)}}>Elephant</option>
+                    <option value={species} onChange={(e) => {setSpecies(e.target.value)}}>Whale Shark</option>
+                    <option value={species} onChange={(e) => {setSpecies(e.target.value)}}>Mountain Pygmy Possum</option>
                 </select>
             </div>
         </div>
 
         <div className="col-span-full">
-            <label htmlFor="sighting" >
+            <label htmlFor="individual" >
             Name of animal sighted:
             </label>
             <div className="mt-2">
                 <input
-                    value={animal}  
+                    value={individual}
                     type="text"
                     name="animal-name"
                     id="animal-name"
+                    onChange={(e) => {setIndividual(e.target.value)}}
                 />
             </div>
         </div>
@@ -130,8 +130,8 @@ function Sightings({setPageToShow}) {
                     name="healthy"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option value={health}>Yes</option>
-                    <option value={health}>No</option>
+                    <option value={health} onChange={(e) => {setHealth(true)}}>Yes</option>
+                    <option value={health} onChange={(e) => {setHealth(false)}}>No</option>
                 </select>
             </div>
         </div>
@@ -147,6 +147,7 @@ function Sightings({setPageToShow}) {
                     name="explanation-health"
                     rows={3}
                     defaultValue={''}
+                    onChange={(e) => {setHealthEx(e.target.value)}}
                 />
             </div>
         </div>
@@ -161,6 +162,7 @@ function Sightings({setPageToShow}) {
                     type="datetime-local" 
                     id="datetime" 
                     placeholder="Date and Time"
+                    onChange={(e) => {setDateTime(e.target.value)}}
                 />
             </div>
         </div>
@@ -176,9 +178,9 @@ function Sightings({setPageToShow}) {
                     autoComplete="country-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option value={country}>United States</option>
-                    <option value={country}>Canada</option>
-                    <option value={country}>Mexico</option>
+                    <option value={country} onChange={(e) => {setCountry(e.target.value)}}>United States</option>
+                    <option value={country} onChange={(e) => {setCountry(e.target.value)}}>Canada</option>
+                    <option value={country} onChange={(e) => {setCountry(e.target.value)}}>Mexico</option>
                 </select>
             </div>
         </div>
@@ -193,6 +195,7 @@ function Sightings({setPageToShow}) {
                     id="coordinates"
                     name="coordinates"
                     type="text"
+                    onChange={(e) => {setCoordinates(e.target.value)}}
                     
                 />
             </div>
