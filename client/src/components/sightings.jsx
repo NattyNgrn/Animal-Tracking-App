@@ -1,4 +1,4 @@
-
+import "./comp.css"
 function Sightings({setPageToShow}) {
 
     function save(){
@@ -24,7 +24,7 @@ function Sightings({setPageToShow}) {
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
             <div className="sm:col-span-3">
-                <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="first-name" >
                     First name
                 </label>
                 <div className="mt-2">
@@ -33,13 +33,12 @@ function Sightings({setPageToShow}) {
                     name="first-name"
                     id="first-name"
                     autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                 </div>
             </div>
 
             <div className="sm:col-span-3">
-                <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="last-name" >
                     Last name
                 </label>
                 <div className="mt-2">
@@ -48,13 +47,12 @@ function Sightings({setPageToShow}) {
                     name="last-name"
                     id="last-name"
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                 </div>
-        </div>
+            </div>
 
         <div className="sm:col-span-4">
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="email">
                 Email address
             </label>
             <div className="mt-2">
@@ -63,13 +61,12 @@ function Sightings({setPageToShow}) {
                     name="email"
                     type="email"
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
             </div>
         </div>
 
         <div className="sm:col-span-3">
-            <label htmlFor="species" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="species" >
                 Species
             </label>
             <div className="mt-2">
@@ -86,7 +83,7 @@ function Sightings({setPageToShow}) {
         </div>
 
         <div className="col-span-full">
-            <label htmlFor="sighting" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="sighting" >
             Name of animal sighted:
             </label>
             <div className="mt-2">
@@ -94,13 +91,12 @@ function Sightings({setPageToShow}) {
                     type="text"
                     name="animal-name"
                     id="animal-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
             </div>
         </div>
 
         <div className="sm:col-span-3">
-            <label htmlFor="health" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="health" >
                 Appears healthy?
             </label>
             <div className="mt-2">
@@ -116,7 +112,7 @@ function Sightings({setPageToShow}) {
         </div>
 
         <div className="col-span-full">
-            <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="about" >
                 Explanation of health:
             </label>
             <div className="mt-2">
@@ -124,26 +120,24 @@ function Sightings({setPageToShow}) {
                     id="explanation-health"
                     name="explanation-health"
                     rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     defaultValue={''}
                 />
             </div>
         </div>
 
         <div className="sm:col-span-4">
-            <label htmlFor="date-time" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="date-time" >
                 Date and Time spotted:
             </label>
             <div className="mt-2">
                 <input
                     type="datetime-local" id="datetime" placeholder="Date and Time"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
             </div>
         </div>
 
         <div className="sm:col-span-3">
-            <label htmlFor="country" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="country" >
                 Country
             </label>
             <div className="mt-2">
@@ -161,7 +155,7 @@ function Sightings({setPageToShow}) {
         </div>
 
         <div className="sm:col-span-4">
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="email" >
                 Coordinates:
             </label>
             <div className="mt-2">
@@ -169,7 +163,7 @@ function Sightings({setPageToShow}) {
                     id="coordinates"
                     name="coordinates"
                     type="text"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    
                 />
             </div>
 
