@@ -11,7 +11,7 @@ function Ind({setPageToShow}) {
         const [lastName, setLastName] = useState("");
         const [species, setSpecies] = useState("");
         const [individual, setIndividual] = useState("");
-        const [dateTime, setDateTime] = useState();
+        const [dateTime, setDateTime] = useState("");
 
     return (
     <div style={{

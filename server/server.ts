@@ -1,41 +1,106 @@
 import express from "express";
-import cors from "cors";
-import pg from "pg";
+import cors  from "cors"
+import path from "path";
+import dotenv from "dotenv"
+import DB from "./db.js"
+import bodyParser from "body-parser";
+
+dotenv.config();
+const app = express();
+const port = 9090;
+
+//conifguring cors middleware
+app.use(cors());
 
 
-const DB = new pg.Client({
-    user: 'me',
-    host: 'localhost',
-    database: 'week10',
-    password: 'password',
-    port: 5432
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+//tells the server that the body will be a json string and then it turns it into an object
+app.use(bodyParser.json());
 
+//connecting the database
 DB.connect();
 
-const server = Bun.serve({
-    port: 9090,
-    async fetch(req) {
-        const url = new URL(req.url);
-        if(url.pathname === "/") {
-            const animals = await getAnimals();
-            return new Response(animals);
-        }
-        if(url.pathname === "/delete") return new Response("deleting");
-        if(url.pathname === "/update") return new Response("updating");
-        if(url.pathname === "/adding") return new Response("adding");
-        //when i make a request this should print in terminal
-        console.log("working!")
-        return new Response("Bun!");
-        
-    },
+//testing to see if get is working
+app.get("/", (req, res) => {
+    res.json("WELCOME");
 });
 
-async function getAnimals() {
-    const result = await DB.query("SELECT * FROM animaltracking.animals");
-    const rows = result.rows;
-    console.log(rows);
-    return rows;
-}
 
-console.log(`Listening to port ${server.port}`);
+//getting all the events as a list and if it doesnt work it returns an error status
+app.get('/sightings', async (req, res) =>{
+    try{
+        const result = await DB.query(`
+            SELECT * 
+            FROM animaltracking.sightings 
+            LEFT JOIN animaltracking.individual 
+            ON animaltracking.sightings.seenanimal = animaltracking.individual.id
+        `);
+        const rows = result.rows;
+        console.log("animal path working");
+        res.send(rows);
+    } catch(error){
+        console.log(error);
+        return res.status(400).json({error});
+    }
+});
+
+
+//adding an event to the database
+app.post('/addsighting', async (req, res) => {
+    try{
+        //getting these properties from the body
+        const {name, date, description, favorite} = req.body;
+        console.log(req.body);
+        //telling the database to add this new row
+        const result = await DB.query(`
+            INSERT INTO eventsTable (name, date, description, favorite)
+            VALUES ('${name}', '${date}', '${description}', '${favorite}');
+        `);
+        res.send("success");
+    } catch(error){
+        console.log(error);
+        return res.status(400).json({error});
+    
+    }
+});
+
+app.post('/addspecies', async (req, res) => {
+    try{
+        //getting these properties from the body
+        const {name, date, description, favorite} = req.body;
+        console.log(req.body);
+        //telling the database to add this new row
+        const result = await DB.query(`
+            INSERT INTO eventsTable (name, date, description, favorite)
+            VALUES ('${name}', '${date}', '${description}', '${favorite}');
+        `);
+        res.send("success");
+    } catch(error){
+        console.log(error);
+        return res.status(400).json({error});
+    
+    }
+});
+
+app.post('/addindividual', async (req, res) => {
+    try{
+        //getting these properties from the body
+        const {name, date, description, favorite} = req.body;
+        console.log(req.body);
+        //telling the database to add this new row
+        const result = await DB.query(`
+            INSERT INTO eventsTable (name, date, description, favorite)
+            VALUES ('${name}', '${date}', '${description}', '${favorite}');
+        `);
+        res.send("success");
+    } catch(error){
+        console.log(error);
+        return res.status(400).json({error});
+    
+    }
+});
+
+
+
+
+app.listen(port, () => console.log(`listening at http://localhost:${port}`));

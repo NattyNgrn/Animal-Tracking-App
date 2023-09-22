@@ -1,6 +1,6 @@
 import Row from "./row.jsx"
 
-const header = ["First Name", "Last Name", "Email", "Species", "Animal Nickname", "Healthy?", "Column 7", "Date/Time Spotted", "Country", "Coordinates" ];
+const header = ["First Name", "Last Name", "Email", "Species", "Animal Nickname", "Healthy?", "Date/Time Spotted", "Country", "Recorded" ];
 
 function Animaltable({data}){
     return(
