@@ -1,10 +1,28 @@
 import "./comp.css"
 import { useState } from "react";
+import { getIndividuals, newSighting } from "../serverFuncs";
 
 function Sightings({setPageToShow}) {
 
     function backToHome(){
         setPageToShow("home");
+    }
+
+    async function addSighting() {
+        const individuals = await getIndividuals();
+        let individualId = 1;
+        console.log(individuals);
+        for (let i = 0; i < individuals.length; i++) {
+            const indy = individuals[i];
+            console.log(individual);
+            if (indy.nickname == individual) {
+                individualId = indy.id;
+            }
+        }
+        const healthy = health === "yes" ? true : false;
+        await newSighting(dateTime, individualId, country, healthy, email, new Date());
+
+        backToHome();
     }
 
         const [firstName, setFirstName] = useState("");
@@ -91,13 +109,14 @@ function Sightings({setPageToShow}) {
             </label>
             <div className="mt-2">
                 <select
+                    value={species} onChange={(e) => {setSpecies(e.target.value)}}
                     id="species"
                     name="species"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option value={species} onChange={(e) => {setSpecies(e.target.value)}}>Elephant</option>
-                    <option value={species} onChange={(e) => {setSpecies(e.target.value)}}>Whale Shark</option>
-                    <option value={species} onChange={(e) => {setSpecies(e.target.value)}}>Mountain Pygmy Possum</option>
+                    <option>Elephant</option>
+                    <option>Whale Shark</option>
+                    <option>Mountain Pygmy Possum</option>
                 </select>
             </div>
         </div>
@@ -123,12 +142,13 @@ function Sightings({setPageToShow}) {
             </label>
             <div className="mt-2">
                 <select
+                    value={health} onChange={(e) => {setHealth(e.target.value)}}
                     id="healthy"
                     name="healthy"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option value={health} onChange={(e) => {setHealth(true)}}>Yes</option>
-                    <option value={health} onChange={(e) => {setHealth(false)}}>No</option>
+                    <option>Yes</option>
+                    <option>No</option>
                 </select>
             </div>
         </div>
@@ -170,14 +190,15 @@ function Sightings({setPageToShow}) {
             </label>
             <div className="mt-2">
                 <select
+                    value={country} onChange={(e) => {setCountry(e.target.value)}}
                     id="country"
                     name="country"
                     autoComplete="country-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                    <option value={country} onChange={(e) => {setCountry(e.target.value)}}>United States</option>
-                    <option value={country} onChange={(e) => {setCountry(e.target.value)}}>Canada</option>
-                    <option value={country} onChange={(e) => {setCountry(e.target.value)}}>Mexico</option>
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>Mexico</option>
                 </select>
             </div>
         </div>
@@ -208,7 +229,7 @@ function Sightings({setPageToShow}) {
 
                 <button
                     className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={backToHome}>
+                    onClick={addSighting}>
                     Save
                 </button>
 

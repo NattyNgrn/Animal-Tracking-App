@@ -1,6 +1,6 @@
 
 const header = ["First Name", "Last Name", "Email", "Species", "Animal Nickname", "Healthy?", "Date/Time Spotted", "Country", "Recorded" ];
-const keyNames = ["first", "last", "email", "speciesTracking", "nickname", "healthy", "spotted", "location", "recorded"];
+const keyNames = ["first", "last", "email", "speciestracking", "nickname", "healthy", "spotted", "location", "recorded"];
 
 function Row({obj}) {
 

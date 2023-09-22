@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 });
 
 
-//getting all the events as a list and if it doesnt work it returns an error status
+//left joining sightings and individual tables 
 app.get('/sightings', async (req, res) =>{
     try{
         const result = await DB.query(`
@@ -44,53 +44,51 @@ app.get('/sightings', async (req, res) =>{
     }
 });
 
-
-//adding an event to the database
-app.post('/addsighting', async (req, res) => {
+//getting individuals table for the id
+app.get('/individuals', async (req, res) =>{
     try{
-        //getting these properties from the body
-        const {name, date, description, favorite} = req.body;
-        console.log(req.body);
-        //telling the database to add this new row
         const result = await DB.query(`
-            INSERT INTO eventsTable (name, date, description, favorite)
-            VALUES ('${name}', '${date}', '${description}', '${favorite}');
+            SELECT * FROM animaltracking.individual
         `);
-        res.send("success");
+        const rows = result.rows;
+        console.log("animal path working");
+        res.send(rows);
     } catch(error){
         console.log(error);
         return res.status(400).json({error});
-    
     }
 });
 
-app.post('/addspecies', async (req, res) => {
-    try{
-        //getting these properties from the body
-        const {name, date, description, favorite} = req.body;
-        console.log(req.body);
-        //telling the database to add this new row
-        const result = await DB.query(`
-            INSERT INTO eventsTable (name, date, description, favorite)
-            VALUES ('${name}', '${date}', '${description}', '${favorite}');
-        `);
-        res.send("success");
-    } catch(error){
-        console.log(error);
-        return res.status(400).json({error});
-    
-    }
-});
 
+//adding an individual to db
 app.post('/addindividual', async (req, res) => {
     try{
         //getting these properties from the body
-        const {name, date, description, favorite} = req.body;
+        const {nickname, speciestracking, recorded, first, last } = req.body;
         console.log(req.body);
         //telling the database to add this new row
         const result = await DB.query(`
-            INSERT INTO eventsTable (name, date, description, favorite)
-            VALUES ('${name}', '${date}', '${description}', '${favorite}');
+            INSERT INTO animaltracking.individual (nickname, speciestracking, recorded, first, last)
+            VALUES ('${nickname}', '${speciestracking}', '${recorded}', '${first}', '${last}');
+        `);
+        res.send("success");
+    } catch(error){
+        console.log(error);
+        return res.status(400).json({error});
+    
+    }
+});
+
+//adding sighting to db
+app.post('/addsighting', async (req, res) => {
+    try{
+        //getting these properties from the body
+        const {spotted, seenanimal, location, healthy, email, recorded} = req.body;
+        console.log(req.body);
+        //telling the database to add this new row
+        const result = await DB.query(`
+            INSERT INTO animaltracking.sightings (spotted, seenanimal, location, healthy, email, recorded)
+            VALUES ('${spotted}', ${seenanimal}, '${location}', ${healthy}, '${email}', '${recorded}');
         `);
         res.send("success");
     } catch(error){
