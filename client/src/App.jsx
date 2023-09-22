@@ -1,8 +1,9 @@
-import { useState } from 'react'
-import './App.css'
-import Ind from "./components/individual"
-import Sightings from "./components/sightings"
+import { useState } from 'react';
+import './App.css';
+import Ind from "./components/individual";
+import Sightings from "./components/sightings";
 import Animaltable from "./components/animaltable";
+import NewSpecies from "./components/newSpecies";
 
 //need two forms
 //first one is for whos tracking which individual animal
@@ -15,6 +16,7 @@ function App() {
         case "home" : return (<Home setPageToShow={setPageToShow}></Home>);
         case "sightings": return (<Sightings setPageToShow={setPageToShow}></Sightings>);
         case "individual": return (<Ind setPageToShow={setPageToShow}></Ind>);
+        case "newSpecies": return (<NewSpecies setPageToShow={setPageToShow}></NewSpecies>)
     }
 };
 
@@ -22,6 +24,7 @@ function Home({setPageToShow}) {
   
   const handleClick = event => setPageToShow("sightings");
   const handleClick2 = event => setPageToShow("individual");
+  const handleClick3 = event => setPageToShow("newSpecies");
   const [data, setData] = useState([]);
   
   return (
@@ -56,6 +59,12 @@ function Home({setPageToShow}) {
         <div className="mt-6 flex items-center justify-end gap-x-6">         
             <button onClick={handleClick2} style={{margin: '20px'}} className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                 Add a New Animal
+            </button>
+        </div>
+
+        <div className="mt-6 flex items-center justify-end gap-x-6">         
+            <button onClick={handleClick3} style={{margin: '20px'}} className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Add New Species
             </button>
         </div>
         </div>
