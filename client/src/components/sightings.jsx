@@ -7,18 +7,22 @@ function Sightings({setPageToShow}) {
     function backToHome(){
         setPageToShow("home");
     }
-
+//called when save button is clicked 
     async function addSighting() {
+        //gets the individuals from database
         const individuals = await getIndividuals();
         let individualId = 1;
         console.log(individuals);
+        //loops through individuals
         for (let i = 0; i < individuals.length; i++) {
             const indy = individuals[i];
             console.log(individual);
+            //checks if the nickname of the individual inside is what the user entered sets the id if equal
             if (indy.nickname == individual) {
                 individualId = indy.id;
             }
         }
+        //healthy is boolean in tablw so we need to set to true or false based on user input
         const healthy = health === "yes" ? true : false;
         await newSighting(dateTime, individualId, country, healthy, email, new Date());
 

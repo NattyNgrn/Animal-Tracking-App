@@ -4,16 +4,16 @@ import { newIndividual } from "../serverFuncs";
 
 
 function Ind({setPageToShow}) {
-
+    //adds individual and goes back to home
     async function addIndividual(){
         await newIndividual(individual, species, dateTime, firstName, lastName);
         backToHome();
     }
-
+//back to home function
     function backToHome(){
         setPageToShow("home");
     }
-
+//states for the inputs
         const [firstName, setFirstName] = useState("");
         const [lastName, setLastName] = useState("");
         const [species, setSpecies] = useState("");

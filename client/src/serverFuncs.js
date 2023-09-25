@@ -8,7 +8,7 @@ async function getSightings() {
     console.log(sightings);
     return sightings;
 }
-
+//gets the individual table
 async function getIndividuals() {
     const results = await fetch(API + "individuals");
     const individuals = await results.json();
@@ -18,11 +18,12 @@ async function getIndividuals() {
 
 
 
-//post new species
+// //post new species
 
-async function newSpecies(){
+// async function newSpecies(){
 
-}
+// }
+
 
 //post new sighting
 async function newSighting(spotted, seenanimal, location, healthy, email, recorded){
